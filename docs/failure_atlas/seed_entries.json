@@ -1,0 +1,47 @@
+[
+  {
+    "id": "fa-propose-locked-path",
+    "loop_step": "propose",
+    "title": "Candidate touches locked path",
+    "summary": "Diff includes evaluators, held-out sets, or other Last Frozen Layer paths.",
+    "mitigation": "ownership_manifest.locked + LockedPathError before execution",
+    "related_contract": "ownership_manifest",
+    "refs": ["self-harness", "modularrsi"]
+  },
+  {
+    "id": "fa-isolate-eval-escape",
+    "loop_step": "isolate",
+    "title": "Sandbox fails to block evaluator path",
+    "summary": "Proposer reads or writes evaluator / held-out surfaces from inside the jail.",
+    "mitigation": "sandbox_profile.blocked_paths; proposer cannot widen profile",
+    "related_contract": "sandbox_profile",
+    "refs": ["exploitgym"]
+  },
+  {
+    "id": "fa-verify-adversary",
+    "loop_step": "verify_measure",
+    "title": "Scores without integrity check",
+    "summary": "Candidate accepted on proxy score without adversary pass or sealed ledger entry.",
+    "mitigation": "external evaluator + sealed_decision hash chain",
+    "related_contract": "sealed_decision",
+    "refs": ["hackprobe", "rrsi"]
+  },
+  {
+    "id": "fa-promote-no-token",
+    "loop_step": "promote",
+    "title": "Promote without human-signed token",
+    "summary": "Sandbox keep treated as production promotion.",
+    "mitigation": "promotion_token required; frozen_policy_scan_passed",
+    "related_contract": "promotion_token",
+    "refs": ["amodei", "nist-rmf"]
+  },
+  {
+    "id": "fa-audit-chain-break",
+    "loop_step": "audit",
+    "title": "Sealed ledger hash chain break",
+    "summary": "Decision entry prev_hash / entry_hash does not recompute.",
+    "mitigation": "SealedLedger.verify_chain before archive/audit close",
+    "related_contract": "sealed_decision",
+    "refs": []
+  }
+]

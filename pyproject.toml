@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "grsi-lab"
+version = "0.1.0"
+description = "Companion labs for Governed Recursive Self-Improvement (Packt)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Ken Huang" }]
+dependencies = [
+    "jsonschema>=4.22",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "rsi_core*",
+    "lab01_survey_ownership*",
+    "lab02_proposals_model*",
+    "lab03_data_orchestration*",
+    "lab04_isolation_eval*",
+    "lab05_promotion_ecosystem*",
+    "running_lab*",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"

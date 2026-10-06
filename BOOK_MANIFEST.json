@@ -1,0 +1,244 @@
+{
+  "title": "Governed Recursive Self-Improvement",
+  "subtitle": "Bounded Self-Evolution of Agent Harnesses",
+  "author": "Ken Huang",
+  "publisher": "Packt",
+  "citation_style": "packt_inline_url",
+  "citation_rules": {
+    "references_section": false,
+    "url_inline": true,
+    "url_once_per_chapter": true,
+    "subsequent_mentions": "prose_back_reference",
+    "numbers_require_verified_facts": true
+  },
+  "page_budget_total": 330,
+  "proposal_doc_id": "11A3Z0ER6b1xfCdDvZE_bsGJO2p7Ctq4Rf6MXNT-ZjYw",
+  "toc_doc_id": "1h92238FTbMlL-IY9vW-azae4PhaOah1OpJEJ9K-glB8",
+  "github_repo": "kenhuangus/grsi-lab",
+  "parts": [
+    {
+      "id": 1,
+      "title": "Landscape and Ownership",
+      "chapters": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Proposal and Capability Surfaces",
+      "chapters": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Isolation and Evaluation",
+      "chapters": [
+        7,
+        8
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Promotion and Operations",
+      "chapters": [
+        9,
+        10
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Survey of Recursive Self-Improvement Loops",
+      "page_budget": 36,
+      "part": 1,
+      "gdoc_id": "1Z-iMCRcP_ndhyzxcLQlT8g7oxowS3Ag5ipgTaWIwSEg",
+      "source_brief": "docs/SOURCE_BRIEFS/ch01.md",
+      "code_paths": [
+        "lab01_survey_ownership/"
+      ],
+      "primary_artifact": "Minimal evolutionary keep/revert loop + taxonomy tables",
+      "figure_target": 5,
+      "manuscript": "manuscript/ch01.md"
+    },
+    {
+      "number": 2,
+      "title": "Ownership Contracts for Self-Improving Systems",
+      "page_budget": 30,
+      "part": 1,
+      "gdoc_id": "1MyHfI0MgYWu2MPvCVw7UKEkkJpzGlGFnq5L60gt7Wds",
+      "source_brief": "docs/SOURCE_BRIEFS/ch02.md",
+      "code_paths": [
+        "lab01_survey_ownership/"
+      ],
+      "primary_artifact": "Ownership manifest + reject writes to locked paths",
+      "figure_target": 5,
+      "manuscript": "manuscript/ch02.md"
+    },
+    {
+      "number": 3,
+      "title": "Proposing Self-Improvement Candidates",
+      "page_budget": 30,
+      "part": 2,
+      "gdoc_id": "1Mrakwsc2yyqvr2mPAMTdlelASuz1ag3pDpscb9VbAWQ",
+      "source_brief": "docs/SOURCE_BRIEFS/ch03.md",
+      "code_paths": [
+        "lab02_proposals_model/"
+      ],
+      "primary_artifact": "Planner/implementer emitting validated diffs",
+      "figure_target": 5,
+      "manuscript": "manuscript/ch03.md"
+    },
+    {
+      "number": 4,
+      "title": "Self-Improvement for Foundation Models",
+      "page_budget": 34,
+      "part": 2,
+      "gdoc_id": "1hxZ6Dh90CFjAso2ltgmJ7oGC2WJwRZ8cyaw7hDQOdJM",
+      "source_brief": "docs/SOURCE_BRIEFS/ch04.md",
+      "code_paths": [
+        "lab02_proposals_model/"
+      ],
+      "primary_artifact": "Trace-driven LoRA candidate + forgetting gates",
+      "figure_target": 5,
+      "manuscript": "manuscript/ch04.md"
+    },
+    {
+      "number": 5,
+      "title": "Self-Improvement for Data and Memory",
+      "page_budget": 32,
+      "part": 2,
+      "gdoc_id": "1PuYwLrVViASznEv4s4U33H1g0g4dXOTo_t_qZzN_WlE",
+      "source_brief": "docs/SOURCE_BRIEFS/ch05.md",
+      "code_paths": [
+        "lab03_data_orchestration/"
+      ],
+      "primary_artifact": "Memory/corpus patch + experience admission verifier",
+      "figure_target": 5,
+      "manuscript": "manuscript/ch05.md"
+    },
+    {
+      "number": 6,
+      "title": "Self-Improvement for Agent Orchestration",
+      "page_budget": 34,
+      "part": 2,
+      "gdoc_id": "1H5JCQGrFFOfG5sIMW1eKWmiSRxzwdeHFJKZoE-Oy_l0",
+      "source_brief": "docs/SOURCE_BRIEFS/ch06.md",
+      "code_paths": [
+        "lab03_data_orchestration/"
+      ],
+      "primary_artifact": "Harness/skill module mutation + per-module rollback",
+      "figure_target": 5,
+      "manuscript": "manuscript/ch06.md"
+    },
+    {
+      "number": 7,
+      "title": "Isolating Self-Improvement Experiments",
+      "page_budget": 32,
+      "part": 3,
+      "gdoc_id": "1yHAPzFUMJXKAblgsOnWGfJQn5-t-LJWJ2xB0klT3TKs",
+      "source_brief": "docs/SOURCE_BRIEFS/ch07.md",
+      "code_paths": [
+        "lab04_isolation_eval/"
+      ],
+      "primary_artifact": "Sandbox service; blocked evaluator paths",
+      "figure_target": 5,
+      "manuscript": "manuscript/ch07.md"
+    },
+    {
+      "number": 8,
+      "title": "Verifying, Measuring, and Recording Self-Improvement",
+      "page_budget": 38,
+      "part": 3,
+      "gdoc_id": "1EJQlTPTHMb937lyg6f9H1iPAnC0HjU-055dD8CVstME",
+      "source_brief": "docs/SOURCE_BRIEFS/ch08.md",
+      "code_paths": [
+        "lab04_isolation_eval/"
+      ],
+      "primary_artifact": "Eval service + adversary checks + hash-chained ledger",
+      "figure_target": 5,
+      "manuscript": "manuscript/ch08.md"
+    },
+    {
+      "number": 9,
+      "title": "Human Approval Before Production Promotion",
+      "page_budget": 32,
+      "part": 4,
+      "gdoc_id": "1Flg1-6CXzdhJT7bvyRK1iTydqYXgiq8-Kpeo3uO5e60",
+      "source_brief": "docs/SOURCE_BRIEFS/ch09.md",
+      "code_paths": [
+        "lab05_promotion_ecosystem/"
+      ],
+      "primary_artifact": "Promotion gateway; frozen-policy scan",
+      "figure_target": 5,
+      "manuscript": "manuscript/ch09.md"
+    },
+    {
+      "number": 10,
+      "title": "Ecosystem Boundaries, Audit, Kill, and Rollback",
+      "page_budget": 32,
+      "part": 4,
+      "gdoc_id": "134L-dSBboKP-bPY_85i-pq7bQZfSTYrHLdigNeb1Fuc",
+      "source_brief": "docs/SOURCE_BRIEFS/ch10.md",
+      "code_paths": [
+        "lab05_promotion_ecosystem/",
+        "running_lab/"
+      ],
+      "primary_artifact": "Boundary proxy + kill + rollback to ledger hash",
+      "figure_target": 5,
+      "manuscript": "manuscript/ch10.md"
+    }
+  ],
+  "labs": [
+    {
+      "id": 1,
+      "title": "Survey Classification and Ownership Manifests",
+      "chapters": [
+        1,
+        2
+      ],
+      "path": "lab01_survey_ownership/"
+    },
+    {
+      "id": 2,
+      "title": "Proposals and Model-Surface RSI",
+      "chapters": [
+        3,
+        4
+      ],
+      "path": "lab02_proposals_model/"
+    },
+    {
+      "id": 3,
+      "title": "Data- and Orchestration-Surface RSI",
+      "chapters": [
+        5,
+        6
+      ],
+      "path": "lab03_data_orchestration/"
+    },
+    {
+      "id": 4,
+      "title": "Isolation and Evaluation",
+      "chapters": [
+        7,
+        8
+      ],
+      "path": "lab04_isolation_eval/"
+    },
+    {
+      "id": 5,
+      "title": "Promotion and Ecosystem Boundary",
+      "chapters": [
+        9,
+        10
+      ],
+      "path": "lab05_promotion_ecosystem/"
+    }
+  ]
+}

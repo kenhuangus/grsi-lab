@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grsi.lab/schemas/sealed_decision.schema.json",
+  "title": "SealedDecision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lineage_id",
+    "decision",
+    "score_authority",
+    "metric_card_id",
+    "prev_hash",
+    "entry_hash",
+    "repro_script"
+  ],
+  "properties": {
+    "lineage_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["keep", "revert", "reject"]
+    },
+    "score_authority": {
+      "type": "string",
+      "const": "external_evaluator"
+    },
+    "metric_card_id": { "type": "string", "minLength": 1 },
+    "scores": {
+      "type": "object",
+      "additionalProperties": { "type": "number" }
+    },
+    "prev_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$|^GENESIS$"
+    },
+    "entry_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "repro_script": { "type": "string", "minLength": 1 },
+    "notes": { "type": "string" }
+  }
+}

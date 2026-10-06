@@ -1,0 +1,41 @@
+{
+  "toc": "1h92238FTbMlL-IY9vW-azae4PhaOah1OpJEJ9K-glB8",
+  "chapters": {
+    "1": "1Z-iMCRcP_ndhyzxcLQlT8g7oxowS3Ag5ipgTaWIwSEg",
+    "2": "1MyHfI0MgYWu2MPvCVw7UKEkkJpzGlGFnq5L60gt7Wds",
+    "3": "1Mrakwsc2yyqvr2mPAMTdlelASuz1ag3pDpscb9VbAWQ",
+    "4": "1hxZ6Dh90CFjAso2ltgmJ7oGC2WJwRZ8cyaw7hDQOdJM",
+    "5": "1PuYwLrVViASznEv4s4U33H1g0g4dXOTo_t_qZzN_WlE",
+    "6": "1H5JCQGrFFOfG5sIMW1eKWmiSRxzwdeHFJKZoE-Oy_l0",
+    "7": "1yHAPzFUMJXKAblgsOnWGfJQn5-t-LJWJ2xB0klT3TKs",
+    "8": "1EJQlTPTHMb937lyg6f9H1iPAnC0HjU-055dD8CVstME",
+    "9": "1Flg1-6CXzdhJT7bvyRK1iTydqYXgiq8-Kpeo3uO5e60",
+    "10": "134L-dSBboKP-bPY_85i-pq7bQZfSTYrHLdigNeb1Fuc"
+  },
+  "webViewLinks": {
+    "toc": "https://docs.google.com/document/d/1h92238FTbMlL-IY9vW-azae4PhaOah1OpJEJ9K-glB8/edit?usp=drivesdk",
+    "1": "https://docs.google.com/document/d/1Z-iMCRcP_ndhyzxcLQlT8g7oxowS3Ag5ipgTaWIwSEg/edit?usp=drivesdk",
+    "2": "https://docs.google.com/document/d/1MyHfI0MgYWu2MPvCVw7UKEkkJpzGlGFnq5L60gt7Wds/edit?usp=drivesdk",
+    "3": "https://docs.google.com/document/d/1Mrakwsc2yyqvr2mPAMTdlelASuz1ag3pDpscb9VbAWQ/edit?usp=drivesdk",
+    "4": "https://docs.google.com/document/d/1hxZ6Dh90CFjAso2ltgmJ7oGC2WJwRZ8cyaw7hDQOdJM/edit?usp=drivesdk",
+    "5": "https://docs.google.com/document/d/1PuYwLrVViASznEv4s4U33H1g0g4dXOTo_t_qZzN_WlE/edit?usp=drivesdk",
+    "6": "https://docs.google.com/document/d/1H5JCQGrFFOfG5sIMW1eKWmiSRxzwdeHFJKZoE-Oy_l0/edit?usp=drivesdk",
+    "7": "https://docs.google.com/document/d/1yHAPzFUMJXKAblgsOnWGfJQn5-t-LJWJ2xB0klT3TKs/edit?usp=drivesdk",
+    "8": "https://docs.google.com/document/d/1EJQlTPTHMb937lyg6f9H1iPAnC0HjU-055dD8CVstME/edit?usp=drivesdk",
+    "9": "https://docs.google.com/document/d/1Flg1-6CXzdhJT7bvyRK1iTydqYXgiq8-Kpeo3uO5e60/edit?usp=drivesdk",
+    "10": "https://docs.google.com/document/d/134L-dSBboKP-bPY_85i-pq7bQZfSTYrHLdigNeb1Fuc/edit?usp=drivesdk"
+  },
+  "titles": {
+    "toc": "GRSI \u2014 Project Links TOC",
+    "1": "GRSI Ch01 \u2014 Survey of Recursive Self-Improvement Loops",
+    "2": "GRSI Ch02 \u2014 Ownership Contracts for Self-Improving Systems",
+    "3": "GRSI Ch03 \u2014 Proposing Self-Improvement Candidates",
+    "4": "GRSI Ch04 \u2014 Self-Improvement for Foundation Models",
+    "5": "GRSI Ch05 \u2014 Self-Improvement for Data and Memory",
+    "6": "GRSI Ch06 \u2014 Self-Improvement for Agent Orchestration",
+    "7": "GRSI Ch07 \u2014 Isolating Self-Improvement Experiments",
+    "8": "GRSI Ch08 \u2014 Verifying, Measuring, and Recording Self-Improvement",
+    "9": "GRSI Ch09 \u2014 Human Approval Before Production Promotion",
+    "10": "GRSI Ch10 \u2014 Ecosystem Boundaries, Audit, Kill, and Rollback"
+  }
+}

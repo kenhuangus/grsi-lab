@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grsi.lab/schemas/sandbox_profile.schema.json",
+  "title": "SandboxProfile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_id",
+    "filesystem_jail",
+    "allowlist_paths",
+    "blocked_paths",
+    "egress_allow",
+    "credential_ttl_seconds",
+    "resource_budget"
+  ],
+  "properties": {
+    "profile_id": { "type": "string", "minLength": 1 },
+    "filesystem_jail": { "type": "string", "minLength": 1 },
+    "allowlist_paths": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "blocked_paths": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Evaluator and frozen-layer paths the proposer cannot touch"
+    },
+    "egress_allow": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "credential_ttl_seconds": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "resource_budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cpu_cores", "memory_mb", "max_wall_seconds"],
+      "properties": {
+        "cpu_cores": { "type": "number", "exclusiveMinimum": 0 },
+        "memory_mb": { "type": "integer", "minimum": 1 },
+        "max_wall_seconds": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "widening_allowed": {
+      "type": "boolean",
+      "const": false,
+      "description": "Proposer cannot widen its own profile"
+    }
+  }
+}
