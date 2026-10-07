@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
-from typing import Any, Callable
+from datetime import UTC, datetime
+from typing import Any
 
 from lab03_data_orchestration.harness_mutate import HarnessStore
 
@@ -22,7 +23,7 @@ class KillSwitch:
         """Engage the kill switch."""
         self.engaged = True
         self.reason = reason
-        self.engaged_at = datetime.now(timezone.utc).isoformat()
+        self.engaged_at = datetime.now(UTC).isoformat()
         self.events.append(
             {"event": "kill", "reason": reason, "at": self.engaged_at}
         )

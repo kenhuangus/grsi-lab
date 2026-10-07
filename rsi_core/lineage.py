@@ -3,14 +3,14 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
-from enum import Enum
+from datetime import UTC, datetime
+from enum import StrEnum
 from typing import Any
 
 from rsi_core.types import LineageId, new_lineage_id, parse_lineage_id
 
 
-class LineageStatus(str, Enum):
+class LineageStatus(StrEnum):
     OPEN = "open"
     KEEP = "keep"
     REVERT = "revert"
@@ -24,7 +24,7 @@ class LineageRecord:
     lineage_id: LineageId
     status: LineageStatus = LineageStatus.OPEN
     opened_at: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
+        default_factory=lambda: datetime.now(UTC).isoformat()
     )
     closed_at: str | None = None
     close_reason: str | None = None
@@ -67,7 +67,7 @@ def close_lineage(
     if status is LineageStatus.OPEN:
         raise ValueError("Cannot close lineage as open")
     record.status = status
-    record.closed_at = datetime.now(timezone.utc).isoformat()
+    record.closed_at = datetime.now(UTC).isoformat()
     record.close_reason = reason
     return record
 

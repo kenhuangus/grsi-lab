@@ -21,7 +21,6 @@ from lab05_promotion_ecosystem.promotion_gateway import PromotionError, promote
 from rsi_core.lineage import reset_registry
 from rsi_core.types import Surface
 
-
 SAMPLE_MANIFEST: dict[str, Any] = {
     "version": "1.0",
     "components": [
@@ -147,7 +146,11 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Suppress JSON stdout (still returns exit code)",
     )
-    args = parser.parse_args(argv)
+    # Console script `grsi-demo` may be invoked with no flags.
+    raw = list(sys.argv[1:] if argv is None else argv)
+    if not raw:
+        raw = ["--dry-run"]
+    args = parser.parse_args(raw)
     if not args.dry_run:
         parser.error("Specify --dry-run (only supported mode in this stub)")
     summary = run_dry_run(verbose=not args.quiet)

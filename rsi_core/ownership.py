@@ -8,6 +8,7 @@ from typing import Any
 
 import yaml
 
+from rsi_core.paths import is_under_prefix, normalize_lab_path
 from rsi_core.schemas_load import validate_instance
 from rsi_core.types import LockedPathError
 
@@ -27,25 +28,26 @@ def load_manifest(path: str | Path) -> dict[str, Any]:
 
 def locked_paths(manifest: dict[str, Any]) -> set[str]:
     """Return the set of locked (Last Frozen Layer) paths."""
-    return {str(p) for p in manifest.get("locked", [])}
-
-
-def _normalize(path: str) -> str:
-    return path.replace("\\", "/").rstrip("/")
+    return {normalize_lab_path(str(p)) for p in manifest.get("locked", [])}
 
 
 def is_locked(path: str, manifest: dict[str, Any]) -> bool:
-    """True if ``path`` equals or is under a locked prefix."""
-    target = _normalize(path)
+    """True if ``path`` equals or is under a locked prefix (after normalize)."""
     for locked in locked_paths(manifest):
-        prefix = _normalize(locked)
-        if target == prefix or target.startswith(prefix + "/"):
+        if is_under_prefix(path, locked):
             return True
     return False
 
 
 def assert_writable(path: str, manifest: dict[str, Any]) -> None:
-    """Raise ``LockedPathError`` if ``path`` is under a locked prefix."""
+    """Raise ``LockedPathError`` if ``path`` is locked or uses parent traversal."""
+    norm = normalize_lab_path(path)
+    # ``work/../../eval/x`` normalizes to ``../eval/x`` — reject climbs outright.
+    if norm.startswith("..") or norm == "..":
+        raise LockedPathError(
+            path,
+            message=f"Write rejected: parent traversal not allowed ({path})",
+        )
     if is_locked(path, manifest):
         raise LockedPathError(path)
 

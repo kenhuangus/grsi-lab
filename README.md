@@ -24,9 +24,10 @@ python -m venv .venv
 # Windows PowerShell:
 .\.venv\Scripts\Activate.ps1
 pip install -e ".[dev]"
+# or: pip install -r requirements.txt && pip install -e .
 ```
 
-Requires Python 3.11+.
+Requires Python 3.11+. Licensed under MIT (`LICENSE`).
 
 ## Run tests
 
@@ -34,10 +35,14 @@ Requires Python 3.11+.
 pytest -q
 ```
 
+CI runs the same suite on Python 3.11–3.13 (see `.github/workflows/ci.yml`).
+
 ## Run the demo (dry-run)
 
 ```bash
 python -m running_lab.demo --dry-run
+# or after install:
+grsi-demo
 ```
 
 The dry-run exercises: propose → sandbox → eval keep → blocked promote without token → kill/rollback. No GPU or model training is performed.

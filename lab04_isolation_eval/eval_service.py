@@ -9,7 +9,6 @@ from typing import Any
 
 from rsi_core.schemas_load import validate_instance
 
-
 GENESIS = "GENESIS"
 
 
@@ -138,7 +137,7 @@ def evaluate_keep(
     ledger: SealedLedger,
     *,
     metric_card_id: str = "lab-metric-card",
-    repro_script: str = "scripts/repro_stub.py",
+    repro_script: str = "running_lab/repro_stub.py",
     held_out_score: float = 0.7,
     keep_threshold: float = 0.5,
 ) -> dict[str, Any]:

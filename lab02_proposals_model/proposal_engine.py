@@ -9,7 +9,6 @@ from rsi_core.ownership import reject_locked_writes
 from rsi_core.schemas_load import validate_instance
 from rsi_core.types import Surface
 
-
 ProposerRole = Literal["planner", "implementer", "in_harness_verifier"]
 
 

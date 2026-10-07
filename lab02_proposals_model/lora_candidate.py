@@ -51,14 +51,25 @@ def forgetting_gate(
     larger than ``forgetting_gate_threshold`` fails the gate.
     """
     regressions: dict[str, float] = {}
+    missing: list[str] = []
     for task, prior in envelope.prior_task_scores.items():
         post = post_task_scores.get(task)
         if post is None:
+            missing.append(task)
             continue
         drop = prior - post
         if drop > envelope.forgetting_gate_threshold:
             regressions[task] = drop
 
+    if missing:
+        return ForgettingGateResult(
+            passed=False,
+            regressions=regressions,
+            message=(
+                "forgetting gate failed: missing post scores for "
+                + ", ".join(sorted(missing))
+            ),
+        )
     if regressions:
         return ForgettingGateResult(
             passed=False,

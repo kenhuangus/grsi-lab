@@ -3,15 +3,15 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum
 
 
-class Mutability(str, Enum):
+class Mutability(StrEnum):
     MUTABLE = "mutable"
     LOCKED = "locked"
 
 
-class Evaluability(str, Enum):
+class Evaluability(StrEnum):
     EVALUABLE = "evaluable"
     NOT_EVALUABLE = "not_evaluable"
 

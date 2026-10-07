@@ -8,7 +8,6 @@ from typing import Any
 from rsi_core.ownership import load_manifest
 from rsi_core.schemas_load import validate_instance
 
-
 REQUIRED_COMPONENT_FIELDS = (
     "path",
     "owner",

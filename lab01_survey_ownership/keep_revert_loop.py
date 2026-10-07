@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Callable
 
 from rsi_core.lineage import close_lineage, open_lineage
 from rsi_core.types import LineageId
-
 
 ScoreFn = Callable[[dict], float]
 

@@ -9,10 +9,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-GWS = Path(r"C:\Users\kenhu\AppData\Roaming\npm\node_modules\@googleworkspace\cli\bin\gws.exe")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from gws_env import configure_gws_env  # noqa: E402
+
+GWS = configure_gws_env()
 TEMPLATE = "1VkUK66uM_JZnEs25q-CtGerdrsco16bMG3a9xdpXO7g"
-os.environ["GOOGLE_WORKSPACE_CLI_CONFIG_DIR"] = str(Path.home() / ".config/gws-profiles/kenhuangus")
-os.environ["GOOGLE_WORKSPACE_CLI_ACCOUNT"] = "kenhuangus@gmail.com"
 
 # Explicit Packt values (from template) — do not invent
 PACKT = {

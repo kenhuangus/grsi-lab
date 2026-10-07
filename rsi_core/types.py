@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from enum import Enum
+from enum import StrEnum
 from typing import NewType
 from uuid import UUID, uuid4
 
 
-class Surface(str, Enum):
+class Surface(StrEnum):
     """Stack area a candidate may mutate (CONTRACTS.md surface tags)."""
 
     MODEL = "model"

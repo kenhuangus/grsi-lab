@@ -2,7 +2,7 @@
 """Upload manuscript/chNN.md into GRSI chapter Google Docs (replace body).
 
 Packt: manuscripts must already follow inline-URL-once rules.
-Auth: kenhuangus gws profile.
+Auth: set GOOGLE_WORKSPACE_CLI_ACCOUNT / CONFIG_DIR (see .env.example).
 """
 from __future__ import annotations
 
@@ -14,9 +14,10 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-GWS = Path(r"C:\Users\kenhu\AppData\Roaming\npm\node_modules\@googleworkspace\cli\bin\gws.exe")
-os.environ["GOOGLE_WORKSPACE_CLI_CONFIG_DIR"] = str(Path.home() / ".config/gws-profiles/kenhuangus")
-os.environ["GOOGLE_WORKSPACE_CLI_ACCOUNT"] = "kenhuangus@gmail.com"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from gws_env import configure_gws_env  # noqa: E402
+
+GWS = configure_gws_env()
 
 
 def gws(*args: str) -> dict:

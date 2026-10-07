@@ -59,6 +59,28 @@ manuscript/
 # Local dump of Packt template Doc JSON (do not publish third-party chapter body)
 docs/packt_template_doc.json
 
-# Chapter manuscripts stay in Google Docs only — never push to GitHub
-manuscript/
-.git/COMMIT_MSG_TMP.txt
+# Authoring scratch (local only)
+publish*.log
+publish_log.txt
+download.txt
+docs/_ch08_voice_stash.md
+scripts/_*.py
+scripts/archive__*.py
+scripts/audit_*.py
+scripts/boost_*.py
+scripts/conversational_*.py
+scripts/diversify_*.py
+scripts/strip_*.py
+scripts/rewrite_*.py
+scripts/soften_*.py
+scripts/normalize_voice*.py
+scripts/clean_claim*.py
+scripts/fix_ch01*.py
+scripts/qa_chapter*.py
+scripts/export_figure*.py
+scripts/dry_parse*.py
+scripts/publish_remaining.py
+scripts/verify_gdoc_media.py
+_wheel_test/
+figures/
+!figures/.gitkeep

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from functools import lru_cache
+from functools import cache
 from pathlib import Path
 from typing import Any
 
@@ -12,7 +12,22 @@ from jsonschema.exceptions import ValidationError
 
 _FORMAT_CHECKER = FormatChecker()
 
-SCHEMA_DIR = Path(__file__).resolve().parent.parent / "schemas"
+def _resolve_schema_dir() -> Path:
+    """Prefer packaged schemas; fall back to repo-root schemas for editable installs."""
+    here = Path(__file__).resolve().parent
+    candidates = (
+        here / "schemas",
+        here.parent / "schemas",
+    )
+    for candidate in candidates:
+        if (candidate / "ownership_manifest.schema.json").is_file():
+            return candidate
+    raise FileNotFoundError(
+        "GRSI JSON schemas not found. Expected rsi_core/schemas/ or repo schemas/."
+    )
+
+
+SCHEMA_DIR = _resolve_schema_dir()
 
 SCHEMA_NAMES = (
     "ownership_manifest",
@@ -26,7 +41,7 @@ SCHEMA_NAMES = (
 )
 
 
-@lru_cache(maxsize=None)
+@cache
 def load_schema(name: str) -> dict[str, Any]:
     """Load a schema by short name (without ``.schema.json``)."""
     if name not in SCHEMA_NAMES:

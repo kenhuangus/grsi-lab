@@ -29,3 +29,26 @@ def test_held_out_blocked() -> None:
     profile = default_lab_profile()
     with pytest.raises(SandboxViolation):
         assert_sandbox_allows(["held_out/private.jsonl"], profile)
+
+
+def test_parent_traversal_onto_blocked_prefix() -> None:
+    profile = default_lab_profile()
+    with pytest.raises(SandboxViolation):
+        assert_sandbox_allows(["work/../../eval/scorer.py"], profile)
+
+
+def test_absolute_jail_escape_blocked() -> None:
+    profile = default_lab_profile()
+    with pytest.raises(SandboxViolation, match="jail escape"):
+        assert_sandbox_allows(["/etc/passwd"], profile)
+
+
+def test_absolute_allowlist_required() -> None:
+    profile = default_lab_profile()
+    with pytest.raises(SandboxViolation, match="allowlist"):
+        assert_sandbox_allows(["/sandbox/other/file.py"], profile)
+
+
+def test_absolute_allowlisted_work_path() -> None:
+    profile = default_lab_profile()
+    assert_sandbox_allows(["/sandbox/work/candidate.py"], profile)

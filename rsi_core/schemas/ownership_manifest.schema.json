@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grsi.lab/schemas/ownership_manifest.schema.json",
+  "title": "OwnershipManifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "components", "locked"],
+  "properties": {
+    "version": { "type": "string", "minLength": 1 },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "owner", "eval_hook", "rollback_unit", "observability_signal"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "owner": { "type": "string", "minLength": 1 },
+          "eval_hook": { "type": "string", "minLength": 1 },
+          "rollback_unit": { "type": "string", "minLength": 1 },
+          "observability_signal": { "type": "string", "minLength": 1 },
+          "surface": {
+            "type": "string",
+            "enum": ["model", "data", "orchestration", "research_process"]
+          }
+        }
+      }
+    },
+    "locked": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Last Frozen Layer paths; writes must raise LockedPathError"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# Runtime (keep in sync with pyproject.toml)
+jsonschema>=4.22
+pyyaml>=6.0
+
+# Dev / CI
+pytest>=8.0
+ruff>=0.6

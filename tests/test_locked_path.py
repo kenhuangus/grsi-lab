@@ -7,7 +7,6 @@ import pytest
 from rsi_core.ownership import assert_writable, reject_locked_writes
 from rsi_core.types import LockedPathError
 
-
 MANIFEST = {
     "version": "1.0",
     "components": [
@@ -42,3 +41,8 @@ def test_mutable_path_allowed() -> None:
 def test_batch_rejects_on_first_locked() -> None:
     with pytest.raises(LockedPathError):
         reject_locked_writes(["harness/ok.py", "held_out/set.json"], MANIFEST)
+
+
+def test_parent_traversal_cannot_bypass_locked_prefix() -> None:
+    with pytest.raises(LockedPathError):
+        assert_writable("work/../../eval/scorer.py", MANIFEST)

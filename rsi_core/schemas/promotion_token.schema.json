@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grsi.lab/schemas/promotion_token.schema.json",
+  "title": "PromotionToken",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "token_id",
+    "lineage_id",
+    "human_signer",
+    "risk_tier",
+    "frozen_policy_scan_passed",
+    "issued_at"
+  ],
+  "properties": {
+    "token_id": { "type": "string", "minLength": 1 },
+    "lineage_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "human_signer": { "type": "string", "minLength": 1 },
+    "risk_tier": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "frozen_policy_scan_passed": {
+      "type": "boolean",
+      "const": true
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "notes": { "type": "string" }
+  }
+}

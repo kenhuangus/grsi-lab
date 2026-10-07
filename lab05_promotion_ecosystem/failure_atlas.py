@@ -6,7 +6,6 @@ import json
 from pathlib import Path
 from typing import Any
 
-
 LOOP_STEPS = (
     "propose",
     "isolate",
