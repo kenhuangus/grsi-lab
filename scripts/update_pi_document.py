@@ -43,14 +43,14 @@ SECTIONS = [
     },
     {
         "header": "Short Description (250 chars with spaces)",
-        "content": "Master secure, governed, and verified recursive self-improvement (RSI) for AI agents. This guide delivers verified architectures to evolve prompts, code, memory, and model weights under sandbox isolation and cryptographic production controls.",
+        "content": "Build secure, governed, and verified recursive self-improvement (RSI) for AI agents. This guide delivers verified architectures to evolve prompts, code, memory, and model weights under sandbox isolation and cryptographic production controls.",
     },
     {
         "header": "Long Description (1350 chars with spaces)",
         "paragraphs": [
-            "Recursive self-improvement (RSI) allows AI agents to optimize their own prompts, code, memory, and model weights over time. While self-improving loops unlock dramatic capability advances, unconstrained self-modification introduces severe failure modes, including reward hacking, catastrophic forgetting, and behavioral drift. Governed Recursive Self-Improvement delivers a practical engineering discipline for secure, governed, and verified RSI. You will construct hardened architectures where candidate mutations across prompts, algorithms, weights, and orchestration are proposed, sandboxed, empirically benchmarked, and verified before promotion.",
+            "Recursive self-improvement (RSI) allows AI agents to optimize their prompts, code, memory, and model weights over time. Without explicit boundaries, runtime modifications introduce failure modes such as reward hacking, catastrophic forgetting, and behavioral drift. Governed Recursive Self-Improvement delivers an engineering framework for secure, governed, and verified RSI. You will construct architectures where candidate mutations across prompts, algorithms, weights, and orchestration are proposed, isolated in sandboxes, empirically evaluated, and verified before promotion.",
             "Written by Ken Huang, Adjunct Professor at the University of San Francisco and creator of the CSA MAESTRO framework, this book features five runnable lab implementations. You will build evolutionary algorithm search, LoRA model adaptation with anti-forgetting gates, token-efficient memory curation, and AST-level harness hot-reloading. To ensure secure and governed RSI, you will deploy isolated container sandboxes, cryptographic evaluation ledgers, and HMAC-signed promotion tokens.",
-            "By the end of this book, you will possess the production-ready code and architecture to build AI agents with secure, governed, and verified recursive self-improvement.",
+            "By the end of this book, you will have the architecture and code to build AI agents with secure, governed, and verified recursive self-improvement across algorithms, models, and orchestration.",
         ],
     },
     {
@@ -68,7 +68,7 @@ SECTIONS = [
     },
     {
         "header": "Audience (600 characters with spaces)",
-        "content": "This book is for AI engineers, machine learning systems architects, agentic workflow developers, and technical leaders who want to build secure, governed, and verified RSI systems for AI agents. Software engineers designing adaptive LLM pipelines, prompt compilation workflows, or model fine-tuning harnesses will find practical, production-ready architectures. Readers should have intermediate Python proficiency and familiarity with large language model APIs, modern agent frameworks, and fundamental software testing concepts.",
+        "content": "This book is for AI engineers, machine learning systems architects, agentic workflow developers, and technical leaders who build secure, governed, and verified RSI systems for AI agents. Software engineers designing adaptive LLM pipelines, prompt compilation workflows, or model fine-tuning harnesses will find concrete architectures. Readers should have intermediate Python proficiency and familiarity with large language model APIs, modern agent frameworks, and software testing concepts.",
     },
     {
         "header": "Approach (400 chars with spaces)",
@@ -76,26 +76,28 @@ SECTIONS = [
     },
     {
         "header": "Author Bio (750 chars with spaces)",
-        "content": "Ken Huang is an internationally recognized expert in artificial intelligence and cybersecurity. He is an Adjunct Professor at the University of San Francisco and co-chair of the Cloud Security Alliance (CSA) AI Safety Working Group, where he created the MAESTRO threat-modeling framework for agentic systems. Ken has authored multiple acclaimed books on AI engineering and distributed systems. He regularly advises Fortune 500 enterprises, government agencies, and research institutes on AI safety governance, secure agent systems, and governed RSI architectures. He also serves as a keynote speaker and conference chair across global technology summits.",
+        "content": "Ken Huang is an Adjunct Professor at the University of San Francisco and co-chair of the Cloud Security Alliance (CSA) AI Safety Working Group, where he created the MAESTRO threat-modeling framework for agentic systems. He has authored books on AI engineering and distributed systems, and advises enterprises, government agencies, and research institutes on AI safety governance, secure agent systems, and governed RSI architectures. He also speaks and chairs sessions at technology conferences.",
     },
 ]
 
 def build_document_text_and_styles():
     """Build full plain text and calculate ranges for headers and content."""
     full_text = "Product Information — Governed Recursive Self-Improvement\n\n"
-    styles = [] # list of (start, end, style_dict)
+    styles = []  # list of (start, end, style_dict)
 
     # Document Title style
+    doc_title_text = "Product Information — Governed Recursive Self-Improvement\n"
     styles.append({
         "start": 1,
-        "end": len(full_text),
+        "end": 1 + len(doc_title_text),
         "type": "DOC_TITLE"
     })
 
     current_idx = 1 + len(full_text)
 
-    for section in SECTIONS:
-        hdr = section["header"] + "\n\n"
+    for i, section in enumerate(SECTIONS):
+        is_last_section = (i == len(SECTIONS) - 1)
+        hdr = section["header"] + "\n"
         hdr_start = current_idx
         hdr_end = current_idx + len(hdr)
         full_text += hdr
@@ -107,7 +109,7 @@ def build_document_text_and_styles():
         current_idx = hdr_end
 
         if "content" in section:
-            body = section["content"] + "\n\n"
+            body = section["content"] + ("\n" if is_last_section else "\n\n")
             body_start = current_idx
             body_end = current_idx + len(body)
             full_text += body
@@ -118,8 +120,10 @@ def build_document_text_and_styles():
             })
             current_idx = body_end
         elif "paragraphs" in section:
-            for p in section["paragraphs"]:
-                p_text = p + "\n\n"
+            num_p = len(section["paragraphs"])
+            for p_idx, p in enumerate(section["paragraphs"]):
+                is_last_p = (p_idx == num_p - 1)
+                p_text = p + ("\n" if (is_last_section and is_last_p) else "\n\n")
                 p_start = current_idx
                 p_end = current_idx + len(p_text)
                 full_text += p_text
@@ -141,8 +145,9 @@ def build_document_text_and_styles():
                     "type": "BULLET_TEXT"
                 })
                 current_idx = b_end
-            full_text += "\n"
-            current_idx += 1
+            if not is_last_section:
+                full_text += "\n"
+                current_idx += 1
 
     return full_text, styles
 
@@ -186,7 +191,7 @@ def main():
             "range": {"startIndex": 1, "endIndex": doc_end - 1},
             "paragraphStyle": {
                 "lineSpacing": 115,
-                "spaceBelow": {"magnitude": 8, "unit": "PT"},
+                "spaceBelow": {"magnitude": 2, "unit": "PT"},
             },
             "fields": "lineSpacing,spaceBelow",
         }
@@ -216,8 +221,8 @@ def main():
                 "updateParagraphStyle": {
                     "range": {"startIndex": st, "endIndex": en},
                     "paragraphStyle": {
-                        "spaceAbove": {"magnitude": 12, "unit": "PT"},
-                        "spaceBelow": {"magnitude": 16, "unit": "PT"},
+                        "spaceAbove": {"magnitude": 6, "unit": "PT"},
+                        "spaceBelow": {"magnitude": 4, "unit": "PT"},
                     },
                     "fields": "spaceAbove,spaceBelow",
                 }
@@ -238,8 +243,8 @@ def main():
                 "updateParagraphStyle": {
                     "range": {"startIndex": st, "endIndex": en},
                     "paragraphStyle": {
-                        "spaceAbove": {"magnitude": 14, "unit": "PT"},
-                        "spaceBelow": {"magnitude": 4, "unit": "PT"},
+                        "spaceAbove": {"magnitude": 8, "unit": "PT"},
+                        "spaceBelow": {"magnitude": 2, "unit": "PT"},
                     },
                     "fields": "spaceAbove,spaceBelow",
                 }
