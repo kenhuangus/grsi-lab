@@ -14,6 +14,11 @@ from publish_chapter_to_gdoc import gws, gws_batch
 
 DOC_ID = "1M29Em3yqS7fO-f3qxKZvEEYW7bQuab21UDeXPO-wa-E"
 
+# Packt Brand Orange (#EB5928 / RGB 235, 89, 40)
+PACKT_ORANGE_FG = {
+    "color": {"rgbColor": {"red": 0.92156863, "green": 0.34901961, "blue": 0.15686275}}
+}
+
 SECTIONS = [
     {
         "header": "Title (50 chars with spaces)",
@@ -202,7 +207,7 @@ def main():
                     "textStyle": {
                         "weightedFontFamily": {"fontFamily": "Jost", "weight": 700},
                         "fontSize": {"magnitude": 20, "unit": "PT"},
-                        "foregroundColor": {"color": {"rgbColor": {"red": 0.122, "green": 0.306, "blue": 0.475}}},
+                        "foregroundColor": PACKT_ORANGE_FG,
                     },
                     "fields": "weightedFontFamily,fontSize,foregroundColor",
                 }
@@ -224,7 +229,7 @@ def main():
                     "textStyle": {
                         "weightedFontFamily": {"fontFamily": "Jost", "weight": 700},
                         "fontSize": {"magnitude": 13, "unit": "PT"},
-                        "foregroundColor": {"color": {"rgbColor": {"red": 0.122, "green": 0.306, "blue": 0.475}}},
+                        "foregroundColor": PACKT_ORANGE_FG,
                     },
                     "fields": "weightedFontFamily,fontSize,foregroundColor",
                 }
