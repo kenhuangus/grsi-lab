@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=75", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "grsi-lab"
-version = "0.1.1"
+version = "0.2.0"
 description = "Companion labs for Governed Recursive Self-Improvement (Packt)"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -12,18 +12,21 @@ license = { text = "MIT" }
 authors = [{ name = "Ken Huang" }]
 keywords = ["RSI", "agents", "Packt", "governance", "self-improvement"]
 dependencies = [
-    "jsonschema>=4.22",
-    "pyyaml>=6.0",
+    "jsonschema>=4.26.0,<5",
+    "PyYAML>=6.0.3,<7",
+    "cryptography>=44.0.0,<51",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.0",
-    "ruff>=0.6",
+    "pytest>=9.1.1,<10",
+    "ruff>=0.16.0,<1",
+    "pip-audit>=2.9.0",
 ]
 
 [project.scripts]
 grsi-demo = "running_lab.demo:main"
+grsi-repro = "running_lab.repro:main"
 
 [tool.setuptools.packages.find]
 where = ["."]

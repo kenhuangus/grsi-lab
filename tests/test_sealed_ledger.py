@@ -11,7 +11,7 @@ def test_sealed_decision_hash_chain() -> None:
         lineage_id="12345678-1234-4234-8234-123456789abc",
         decision="keep",
         metric_card_id="card-1",
-        repro_script="scripts/repro.py",
+        repro_script="running_lab/repro.py",
         scores={"held_out": 0.8},
     )
     assert e1["prev_hash"] == "GENESIS"
@@ -21,7 +21,7 @@ def test_sealed_decision_hash_chain() -> None:
         lineage_id="12345678-1234-4234-8234-123456789abd",
         decision="revert",
         metric_card_id="card-1",
-        repro_script="scripts/repro.py",
+        repro_script="running_lab/repro.py",
         scores={"held_out": 0.4},
     )
     assert e2["prev_hash"] == e1["entry_hash"]
@@ -34,7 +34,7 @@ def test_tampered_chain_fails_verify() -> None:
         lineage_id="12345678-1234-4234-8234-123456789abc",
         decision="keep",
         metric_card_id="card-1",
-        repro_script="scripts/repro.py",
+        repro_script="running_lab/repro.py",
     )
     ledger.entries[0]["entry_hash"] = "0" * 64
     assert ledger.verify_chain() is False

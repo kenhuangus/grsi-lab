@@ -1,6 +1,9 @@
 recursive-include schemas *.schema.json
 recursive-include rsi_core/schemas *.schema.json
+recursive-include fixtures *
 include LICENSE
 include CONTRACTS.md
 include BOOK_MANIFEST.json
 include requirements.txt
+include SECURITY.md
+include CONTRIBUTING.md

@@ -10,7 +10,9 @@
     "human_signer",
     "risk_tier",
     "frozen_policy_scan_passed",
-    "issued_at"
+    "frozen_policy_scan_report_hash",
+    "issued_at",
+    "signature"
   ],
   "properties": {
     "token_id": { "type": "string", "minLength": 1 },
@@ -27,6 +29,10 @@
       "type": "boolean",
       "const": true
     },
+    "frozen_policy_scan_report_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
     "issued_at": {
       "type": "string",
       "format": "date-time"
@@ -35,6 +41,11 @@
       "type": "string",
       "format": "date-time"
     },
-    "notes": { "type": "string" }
+    "notes": { "type": "string" },
+    "signature": {
+      "type": "string",
+      "minLength": 16,
+      "description": "URL-safe base64 HMAC-SHA256 over canonical token JSON excluding signature"
+    }
   }
 }

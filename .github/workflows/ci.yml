@@ -22,9 +22,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -e ".[dev]"
+      - name: Dependency audit
+        run: pip-audit -r requirements.txt
       - name: Ruff check
         run: ruff check rsi_core lab01_survey_ownership lab02_proposals_model lab03_data_orchestration lab04_isolation_eval lab05_promotion_ecosystem running_lab tests
       - name: Pytest
         run: pytest -q
-      - name: Demo dry-run
-        run: python -m running_lab.demo --dry-run --quiet
+      - name: Lab run
+        run: python -m running_lab.demo --lab --quiet

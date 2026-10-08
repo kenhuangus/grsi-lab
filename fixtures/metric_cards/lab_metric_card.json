@@ -1,0 +1,23 @@
+{
+  "card_id": "lab-metric-card",
+  "held_in": {
+    "dataset_ref": "held_in.jsonl",
+    "metric_name": "accuracy"
+  },
+  "held_out": {
+    "dataset_ref": "held_out.jsonl",
+    "metric_name": "accuracy"
+  },
+  "multi_seed": {
+    "seeds": [1, 2, 3],
+    "aggregate": "mean"
+  },
+  "module_ablation": {
+    "modules": ["adapter"],
+    "required": true
+  },
+  "token_roi": {
+    "numerator": "held_out_gain",
+    "denominator": "tokens_used"
+  }
+}

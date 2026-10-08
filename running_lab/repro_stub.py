@@ -1,11 +1,8 @@
-"""Minimal repro script pointer target for sealed decisions (lab stub)."""
+"""Deprecated alias — use ``running_lab.repro``."""
 
 from __future__ import annotations
 
-
-def main() -> None:
-    print("repro_stub: no GPU work; sealed decision is the source of truth")
-
+from running_lab.repro import main
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

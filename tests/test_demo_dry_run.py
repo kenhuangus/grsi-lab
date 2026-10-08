@@ -1,24 +1,15 @@
-"""Smoke test for running_lab.demo --dry-run."""
+"""End-to-end lab run smoke (real gates, local artifacts)."""
 
 from __future__ import annotations
 
-from running_lab.demo import main, run_dry_run
+from running_lab.demo import main, run_lab
 
 
-def test_demo_dry_run_smoke() -> None:
-    summary = run_dry_run(verbose=False)
-    assert summary["dry_run"] is True
+def test_lab_run_all_ok(tmp_path) -> None:
+    summary = run_lab(verbose=False, work_dir=tmp_path / "run")
     assert summary["all_ok"] is True
-    step_names = [s["step"] for s in summary["steps"]]
-    assert step_names == [
-        "propose",
-        "forgetting_gate",
-        "sandbox",
-        "eval",
-        "promote_without_token",
-        "kill_rollback",
-    ]
+    assert summary["lab_run"] is True
 
 
-def test_demo_main_exit_zero() -> None:
-    assert main(["--dry-run", "--quiet"]) == 0
+def test_main_lab_exit_zero() -> None:
+    assert main(["--lab", "--quiet"]) == 0

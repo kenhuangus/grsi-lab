@@ -45,7 +45,7 @@ python -m running_lab.demo --dry-run
 grsi-demo
 ```
 
-The dry-run exercises: propose → sandbox → eval keep → blocked promote without token → kill/rollback. No GPU or model training is performed.
+The lab run exercises real local gates: propose → filesystem jail → on-disk adapter SHA-256 → metric-card evaluation over fixture datasets → HMAC-signed promotion tokens → kill/rollback. No GPU training is required; adapter artifacts are verified weight blobs plus config.
 
 ## Contracts and citations
 

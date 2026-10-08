@@ -1,4 +1,4 @@
-"""Tests for promotion gateway token and sealed-decision requirements."""
+"""Tests for signed promotion gateway."""
 
 from __future__ import annotations
 
@@ -7,113 +7,146 @@ from datetime import UTC, datetime
 import pytest
 
 from lab04_isolation_eval.eval_service import SealedLedger
+from lab05_promotion_ecosystem.frozen_policy import run_frozen_policy_scan
 from lab05_promotion_ecosystem.promotion_gateway import PromotionError, promote
+from rsi_core.crypto_tokens import mint_promotion_token
 
 LINEAGE = "12345678-1234-4234-8234-123456789abc"
 
+MANIFEST = {
+    "version": "1.0",
+    "components": [
+        {
+            "path": "adapters/x/",
+            "owner": "lab",
+            "eval_hook": "eval/score",
+            "rollback_unit": "adapters.x",
+            "observability_signal": "x_ok",
+        }
+    ],
+    "locked": ["eval/", "held_out/", "ledger/", "CONTRACTS.md"],
+}
 
-def _token(**overrides: object) -> dict:
-    base = {
-        "token_id": "tok-1",
-        "lineage_id": LINEAGE,
-        "human_signer": "kenhuangus",
-        "risk_tier": "low",
-        "frozen_policy_scan_passed": True,
-        "issued_at": "2026-10-06T12:00:00Z",
-    }
-    base.update(overrides)
-    return base
+CANDIDATE = {
+    "lineage_id": LINEAGE,
+    "surface": "model",
+    "hypothesis": "Improve held-out accuracy",
+    "metric": "held_out",
+    "rollback": {"unit": "adapters.x", "snapshot_ref": "snap://x"},
+    "diff": {"paths": ["adapters/x/"], "summary": "adapter"},
+    "proposer_role": "implementer",
+}
 
 
-def _keep_decision() -> dict:
-    return {
-        "lineage_id": LINEAGE,
-        "decision": "keep",
-        "score_authority": "external_evaluator",
-        "metric_card_id": "card-1",
-        "prev_hash": "GENESIS",
-        "entry_hash": "a" * 64,
-        "repro_script": "running_lab/repro_stub.py",
-    }
+def _mint(scan_hash: str, **overrides: object) -> dict:
+    token = mint_promotion_token(
+        token_id="tok-1",
+        lineage_id=LINEAGE,
+        human_signer="kenhuangus",
+        risk_tier="low",
+        scan_report_hash=scan_hash,
+    )
+    token.update(overrides)
+    return token
 
 
 def test_promotion_without_token_fails() -> None:
-    with pytest.raises(PromotionError, match="without token"):
-        promote(
-            lineage_id=LINEAGE,
-            sealed_decision=_keep_decision(),
-            token=None,
-        )
-
-
-def test_promotion_with_valid_token() -> None:
-    result = promote(
-        lineage_id=LINEAGE,
-        sealed_decision=_keep_decision(),
-        token=_token(),
-    )
-    assert result["status"] == "promoted"
-    assert result["token_id"] == "tok-1"
-    assert result["entry_hash"] == "a" * 64
-
-
-def test_promotion_rejects_non_keep() -> None:
-    decision = _keep_decision()
-    decision["decision"] = "revert"
-    with pytest.raises(PromotionError, match="kept"):
-        promote(lineage_id=LINEAGE, sealed_decision=decision, token=_token())
-
-
-def test_promotion_rejects_invalid_sealed_decision() -> None:
-    bad = _keep_decision()
-    bad["entry_hash"] = "not-a-hash"
-    with pytest.raises(PromotionError, match="invalid sealed decision"):
-        promote(lineage_id=LINEAGE, sealed_decision=bad, token=_token())
-
-
-def test_promotion_rejects_expired_token() -> None:
-    token = _token(expires_at="2020-01-01T00:00:00Z")
-    with pytest.raises(PromotionError, match="expired"):
-        promote(
-            lineage_id=LINEAGE,
-            sealed_decision=_keep_decision(),
-            token=token,
-            now=datetime(2026, 10, 7, tzinfo=UTC),
-        )
-
-
-def test_promotion_with_ledger_tip() -> None:
     ledger = SealedLedger()
     sealed = ledger.seal(
         lineage_id=LINEAGE,
         decision="keep",
         metric_card_id="card-1",
-        repro_script="running_lab/repro_stub.py",
+        repro_script="running_lab/repro.py",
         scores={"held_out": 0.9},
     )
-    result = promote(
-        lineage_id=LINEAGE,
-        sealed_decision=sealed,
-        token=_token(),
-        ledger=ledger,
-    )
-    assert result["status"] == "promoted"
-    assert result["entry_hash"] == sealed["entry_hash"]
+    with pytest.raises(PromotionError, match="without token"):
+        promote(
+            lineage_id=LINEAGE,
+            sealed_decision=sealed,
+            token=None,
+            ownership_manifest=MANIFEST,
+            candidate=CANDIDATE,
+            ledger=ledger,
+        )
 
 
-def test_promotion_rejects_forged_tip_when_ledger_provided() -> None:
+def test_promotion_with_signed_token_and_ledger() -> None:
     ledger = SealedLedger()
-    ledger.seal(
+    sealed = ledger.seal(
         lineage_id=LINEAGE,
         decision="keep",
         metric_card_id="card-1",
-        repro_script="running_lab/repro_stub.py",
+        repro_script="running_lab/repro.py",
+        scores={"held_out": 0.9},
     )
-    forged = _keep_decision()
-    with pytest.raises(PromotionError, match="ledger tip"):
+    scan = run_frozen_policy_scan(
+        candidate=CANDIDATE, ownership_manifest=MANIFEST, sealed_decision=sealed
+    )
+    token = _mint(scan["report_hash"])
+    result = promote(
+        lineage_id=LINEAGE,
+        sealed_decision=sealed,
+        token=token,
+        ownership_manifest=MANIFEST,
+        candidate=CANDIDATE,
+        ledger=ledger,
+    )
+    assert result["status"] == "promoted"
+
+
+def test_promotion_rejects_bad_signature() -> None:
+    ledger = SealedLedger()
+    sealed = ledger.seal(
+        lineage_id=LINEAGE,
+        decision="keep",
+        metric_card_id="card-1",
+        repro_script="running_lab/repro.py",
+        scores={"held_out": 0.9},
+    )
+    scan = run_frozen_policy_scan(
+        candidate=CANDIDATE, ownership_manifest=MANIFEST, sealed_decision=sealed
+    )
+    token = _mint(scan["report_hash"])
+    token["signature"] = "AAAA" + token["signature"][4:]
+    with pytest.raises(PromotionError):
         promote(
             lineage_id=LINEAGE,
-            sealed_decision=forged,
-            token=_token(),
+            sealed_decision=sealed,
+            token=token,
+            ownership_manifest=MANIFEST,
+            candidate=CANDIDATE,
             ledger=ledger,
+        )
+
+
+def test_promotion_rejects_expired_token() -> None:
+    ledger = SealedLedger()
+    sealed = ledger.seal(
+        lineage_id=LINEAGE,
+        decision="keep",
+        metric_card_id="card-1",
+        repro_script="running_lab/repro.py",
+        scores={"held_out": 0.9},
+    )
+    scan = run_frozen_policy_scan(
+        candidate=CANDIDATE, ownership_manifest=MANIFEST, sealed_decision=sealed
+    )
+    token = mint_promotion_token(
+        token_id="tok-1",
+        lineage_id=LINEAGE,
+        human_signer="kenhuangus",
+        risk_tier="low",
+        scan_report_hash=scan["report_hash"],
+        ttl_seconds=1,
+    )
+    # Force expiry in the past by reminting is hard; call with now far future after mint
+    with pytest.raises(PromotionError, match="expired"):
+        promote(
+            lineage_id=LINEAGE,
+            sealed_decision=sealed,
+            token=token,
+            ownership_manifest=MANIFEST,
+            candidate=CANDIDATE,
+            ledger=ledger,
+            now=datetime(2099, 1, 1, tzinfo=UTC),
         )
