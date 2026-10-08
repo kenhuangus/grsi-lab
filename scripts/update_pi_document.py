@@ -26,57 +26,57 @@ SECTIONS = [
     },
     {
         "header": "Subtitle (100 chars with spaces)",
-        "content": "Architect safe autonomous AI agents with bounded self-evolution and sandboxed verification",
+        "content": "Build self-improving AI agents across models, prompts, memory, orchestration, and governance",
     },
     {
         "header": "PacktPub Meta Description / Hook (230 chars with spaces)",
-        "content": "Build production-ready autonomous agent systems that safely evolve prompts, code, and weights under strict cryptographic ledgers and automated rollback gates.",
+        "content": "Master recursive self-improvement to build AI agents that evolve algorithms, prompts, memory, and model weights under empirical evaluation, sandbox isolation, and production controls.",
     },
     {
         "header": "Key Features (3 bullet points, each max 100 chars; 4th standard point included)",
         "bullets": [
-            "Implement tamper-proof cryptographic ledgers and HMAC tokens to verify every agent mutation",
-            "Prevent catastrophic forgetting with automated threshold gates across adapters and memory stores",
-            "Deploy isolated container sandboxes that block unauthorized network egress and file tampering",
+            "Evolve algorithms, prompts, and agent code using evolutionary search and reflective optimization",
+            "Adapt model weights and curate long-term memory while preventing catastrophic forgetting",
+            "Isolate mutations in container sandboxes and verify gains with cryptographic promotion ledgers",
             "Purchase of the print or Kindle book includes a free PDF eBook",
         ],
     },
     {
         "header": "Short Description (250 chars with spaces)",
-        "content": "Autonomous agents that modify their own code risk catastrophic misalignment without rigorous controls. This guide delivers verified architectural patterns, sandbox isolation, and cryptographic governance to build secure self-improving AI systems.",
+        "content": "Unlock recursive self-improvement for AI agents. This guide delivers concrete architectures to evolve prompts, code, memory, and model weights, paired with sandboxed evaluation, verifiable measurement, and production governance.",
     },
     {
         "header": "Long Description (1350 chars with spaces)",
         "paragraphs": [
-            "Autonomous AI agents that modify their own prompts, tools, or weights can rapidly degrade, overfit, or bypass safety constraints without strict boundaries. Governed Recursive Self-Improvement solves this challenge by establishing an engineering discipline for bounded self-evolution. Rather than relying on unconstrained loops, you will construct a hardened architecture where every mutation is proposed, isolated, evaluated against held-out benchmarks, and verified before deployment.",
-            "Written by Ken Huang, Adjunct Professor at the University of San Francisco and creator of the CSA MAESTRO framework, this book provides five production-ready lab implementations. You will build schema-enforced proposal engines, anti-forgetting gates for LoRA adapters, AST-level harness hot-reloading with per-module rollback, and bubblewrap container sandboxes with default-deny network egress. You will also implement append-only cryptographic evaluation ledgers and HMAC-signed promotion tokens.",
-            "By the end of this book, you will possess the architectural frameworks and code to build autonomous agent harnesses that reliably self-improve while maintaining complete operational safety, auditability, and human oversight.",
+            "Recursive self-improvement (RSI) allows AI agents to optimize their own prompts, code, memory, and model weights over time. Rather than relying on static pipelines, self-improving systems continuously enhance their capabilities. Yet unconstrained mutation risks reward hacking, catastrophic forgetting, and operational drift. Governed Recursive Self-Improvement provides a comprehensive engineering blueprint for RSI, showing you how to build evolutionary program search loops, reflective prompt optimizers, and adaptive memory architectures under verified controls.",
+            "Written by Ken Huang, Adjunct Professor at the University of San Francisco and creator of the CSA MAESTRO framework, this book features five runnable lab implementations. You will implement evolutionary algorithm search, LoRA model adaptation with anti-forgetting gates, token-efficient memory curation, and AST-level harness hot-reloading. You will also deploy isolated container sandboxes, cryptographic evaluation ledgers, and HMAC promotion tokens to govern candidate mutations.",
+            "By the end of this book, you will possess the practical architecture and code to build AI agents that recursively self-improve across algorithms, models, and workflows while maintaining complete operational safety.",
         ],
     },
     {
         "header": "What you will learn (6-8 bullet points, max 70 chars each)",
         "bullets": [
-            "Enforce file boundaries using JSON Schema ownership manifests",
-            "Build proposal engines that validate code diffs before execution",
-            "Block model forgetting using LoRA adapter threshold evaluation gates",
-            "Quarantine unverified experience data using token budget controls",
-            "Hot-reload agent skills with AST validation and per-module rollbacks",
-            "Isolate agent workers in Linux sandboxes with strict network jails",
-            "Record tamper-evident evaluation decisions using SHA-256 hash chains",
-            "Require HMAC tokens before promoting mutated agents to production",
+            "Build evolutionary code search engines that mutate algorithm logic",
+            "Define JSON Schema contracts to bound mutable agent code and prompts",
+            "Optimize prompts using reflective critique and genetic compile loops",
+            "Adapt LoRA model weights while preventing catastrophic forgetting",
+            "Curate episodic agent memory using token ROI and budget controls",
+            "Hot-reload multi-agent harnesses with AST validation and rollback",
+            "Isolate mutations in Linux sandboxes and record SHA-256 hash ledgers",
+            "Enforce HMAC promotion tokens and automated ecosystem kill switches",
         ],
     },
     {
         "header": "Audience (600 characters with spaces)",
-        "content": "This book is for AI engineers, machine learning systems architects, agentic workflow developers, and security practitioners who want to build autonomous systems that self-improve safely. Engineering leaders deploying autonomous coding or research agents in production environments will also find this guide essential for governance. Readers should have intermediate Python proficiency and familiarity with large language model APIs, modern agent frameworks, and fundamental software testing concepts.",
+        "content": "This book is for AI engineers, machine learning systems architects, agentic workflow developers, and technical leaders who want to build AI agents that recursively self-improve. Software engineers designing adaptive LLM pipelines, prompt compilation workflows, or model fine-tuning harnesses will find practical, production-ready architectures. Readers should have intermediate Python proficiency and familiarity with large language model APIs, modern agent frameworks, and fundamental software testing concepts.",
     },
     {
         "header": "Approach (400 chars with spaces)",
-        "content": "This book uses a contract-driven engineering curriculum centered on five runnable lab implementations. You learn by defining immutable schema contracts, configuring isolated execution sandboxes, running automated failure injection drills, and verifying cryptographic audit trails. Each chapter pairs architectural taxonomy with deterministic test suites that validate system behavior.",
+        "content": "This book uses a contract-driven engineering curriculum centered on five runnable lab implementations. You learn by defining immutable schema contracts, building evolutionary proposal loops, fine-tuning model adapters, and isolating execution in container sandboxes. Each chapter pairs architectural taxonomy with deterministic test suites that validate system behavior.",
     },
     {
         "header": "Author Bio (750 chars with spaces)",
-        "content": "Ken Huang is an internationally recognized expert in artificial intelligence and cybersecurity. He is an Adjunct Professor at the University of San Francisco and co-chair of the Cloud Security Alliance (CSA) AI Safety Working Group, where he created the MAESTRO threat-modeling framework for agentic systems. Ken has authored multiple acclaimed books on AI engineering and distributed systems. He regularly advises Fortune 500 enterprises, government agencies, and research institutes on AI safety governance and autonomous agent security. He also serves as a keynote speaker and conference chair across global technology summits.",
+        "content": "Ken Huang is an internationally recognized expert in artificial intelligence and cybersecurity. He is an Adjunct Professor at the University of San Francisco and co-chair of the Cloud Security Alliance (CSA) AI Safety Working Group, where he created the MAESTRO threat-modeling framework for agentic systems. Ken has authored multiple acclaimed books on AI engineering and distributed systems. He regularly advises Fortune 500 enterprises, government agencies, and research institutes on AI safety governance and agent system architectures. He also serves as a keynote speaker and conference chair across global technology summits.",
     },
 ]
 
