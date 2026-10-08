@@ -58,6 +58,10 @@ manuscript/
 .git/COMMIT_MSG_TMP.txt
 # Local dump of Packt template Doc JSON (do not publish third-party chapter body)
 docs/packt_template_doc.json
+# Product Information documents are Google Docs only — never push prose to GitHub
+docs/PRODUCT_INFORMATION.md
+docs/*PRODUCT_INFORMATION*
+docs/*product_information*
 
 # Authoring scratch (local only)
 publish*.log
