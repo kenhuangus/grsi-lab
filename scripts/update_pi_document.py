@@ -26,31 +26,31 @@ SECTIONS = [
     },
     {
         "header": "Subtitle (100 chars with spaces)",
-        "content": "Build self-improving AI agents across models, prompts, memory, orchestration, and governance",
+        "content": "Design secure, governed, and verified recursive self-improvement for AI agents and models",
     },
     {
         "header": "PacktPub Meta Description / Hook (230 chars with spaces)",
-        "content": "Master recursive self-improvement to build AI agents that evolve algorithms, prompts, memory, and model weights under empirical evaluation, sandbox isolation, and production controls.",
+        "content": "Implement secure, governed, and verified recursive self-improvement to build AI agents that evolve algorithms, prompts, memory, and model weights under sandboxed execution and cryptographic promotion gates.",
     },
     {
         "header": "Key Features (3 bullet points, each max 100 chars; 4th standard point included)",
         "bullets": [
-            "Evolve algorithms, prompts, and agent code using evolutionary search and reflective optimization",
-            "Adapt model weights and curate long-term memory while preventing catastrophic forgetting",
-            "Isolate mutations in container sandboxes and verify gains with cryptographic promotion ledgers",
+            "Evolve algorithms, prompts, and code using evolutionary search and reflective optimization loops",
+            "Adapt model weights and curate episodic memory while preventing catastrophic forgetting",
+            "Enforce secure, governed, and verified RSI with container sandboxes and cryptographic ledgers",
             "Purchase of the print or Kindle book includes a free PDF eBook",
         ],
     },
     {
         "header": "Short Description (250 chars with spaces)",
-        "content": "Unlock recursive self-improvement for AI agents. This guide delivers concrete architectures to evolve prompts, code, memory, and model weights, paired with sandboxed evaluation, verifiable measurement, and production governance.",
+        "content": "Master secure, governed, and verified recursive self-improvement (RSI) for AI agents. This guide delivers verified architectures to evolve prompts, code, memory, and model weights under sandbox isolation and cryptographic production controls.",
     },
     {
         "header": "Long Description (1350 chars with spaces)",
         "paragraphs": [
-            "Recursive self-improvement (RSI) allows AI agents to optimize their own prompts, code, memory, and model weights over time. Rather than relying on static pipelines, self-improving systems continuously enhance their capabilities. Yet unconstrained mutation risks reward hacking, catastrophic forgetting, and operational drift. Governed Recursive Self-Improvement provides a comprehensive engineering blueprint for RSI, showing you how to build evolutionary program search loops, reflective prompt optimizers, and adaptive memory architectures under verified controls.",
-            "Written by Ken Huang, Adjunct Professor at the University of San Francisco and creator of the CSA MAESTRO framework, this book features five runnable lab implementations. You will implement evolutionary algorithm search, LoRA model adaptation with anti-forgetting gates, token-efficient memory curation, and AST-level harness hot-reloading. You will also deploy isolated container sandboxes, cryptographic evaluation ledgers, and HMAC promotion tokens to govern candidate mutations.",
-            "By the end of this book, you will possess the practical architecture and code to build AI agents that recursively self-improve across algorithms, models, and workflows while maintaining complete operational safety.",
+            "Recursive self-improvement (RSI) allows AI agents to optimize their own prompts, code, memory, and model weights over time. While self-improving loops unlock dramatic capability advances, unconstrained self-modification introduces severe failure modes, including reward hacking, catastrophic forgetting, and behavioral drift. Governed Recursive Self-Improvement delivers a practical engineering discipline for secure, governed, and verified RSI. You will construct hardened architectures where candidate mutations across prompts, algorithms, weights, and orchestration are proposed, sandboxed, empirically benchmarked, and verified before promotion.",
+            "Written by Ken Huang, Adjunct Professor at the University of San Francisco and creator of the CSA MAESTRO framework, this book features five runnable lab implementations. You will build evolutionary algorithm search, LoRA model adaptation with anti-forgetting gates, token-efficient memory curation, and AST-level harness hot-reloading. To ensure secure and governed RSI, you will deploy isolated container sandboxes, cryptographic evaluation ledgers, and HMAC-signed promotion tokens.",
+            "By the end of this book, you will possess the production-ready code and architecture to build AI agents with secure, governed, and verified recursive self-improvement.",
         ],
     },
     {
@@ -62,21 +62,21 @@ SECTIONS = [
             "Adapt LoRA model weights while preventing catastrophic forgetting",
             "Curate episodic agent memory using token ROI and budget controls",
             "Hot-reload multi-agent harnesses with AST validation and rollback",
-            "Isolate mutations in Linux sandboxes and record SHA-256 hash ledgers",
-            "Enforce HMAC promotion tokens and automated ecosystem kill switches",
+            "Isolate and verify RSI experiments in sandboxes with SHA-256 ledgers",
+            "Enforce secure, governed promotion gates using HMAC validation tokens",
         ],
     },
     {
         "header": "Audience (600 characters with spaces)",
-        "content": "This book is for AI engineers, machine learning systems architects, agentic workflow developers, and technical leaders who want to build AI agents that recursively self-improve. Software engineers designing adaptive LLM pipelines, prompt compilation workflows, or model fine-tuning harnesses will find practical, production-ready architectures. Readers should have intermediate Python proficiency and familiarity with large language model APIs, modern agent frameworks, and fundamental software testing concepts.",
+        "content": "This book is for AI engineers, machine learning systems architects, agentic workflow developers, and technical leaders who want to build secure, governed, and verified RSI systems for AI agents. Software engineers designing adaptive LLM pipelines, prompt compilation workflows, or model fine-tuning harnesses will find practical, production-ready architectures. Readers should have intermediate Python proficiency and familiarity with large language model APIs, modern agent frameworks, and fundamental software testing concepts.",
     },
     {
         "header": "Approach (400 chars with spaces)",
-        "content": "This book uses a contract-driven engineering curriculum centered on five runnable lab implementations. You learn by defining immutable schema contracts, building evolutionary proposal loops, fine-tuning model adapters, and isolating execution in container sandboxes. Each chapter pairs architectural taxonomy with deterministic test suites that validate system behavior.",
+        "content": "This book uses a contract-driven engineering curriculum centered on five runnable lab implementations. You learn by defining immutable schema contracts, building evolutionary proposal loops, fine-tuning model adapters, and isolating execution in container sandboxes. Each chapter pairs architectural taxonomy with deterministic test suites to implement secure, governed, and verified RSI.",
     },
     {
         "header": "Author Bio (750 chars with spaces)",
-        "content": "Ken Huang is an internationally recognized expert in artificial intelligence and cybersecurity. He is an Adjunct Professor at the University of San Francisco and co-chair of the Cloud Security Alliance (CSA) AI Safety Working Group, where he created the MAESTRO threat-modeling framework for agentic systems. Ken has authored multiple acclaimed books on AI engineering and distributed systems. He regularly advises Fortune 500 enterprises, government agencies, and research institutes on AI safety governance and agent system architectures. He also serves as a keynote speaker and conference chair across global technology summits.",
+        "content": "Ken Huang is an internationally recognized expert in artificial intelligence and cybersecurity. He is an Adjunct Professor at the University of San Francisco and co-chair of the Cloud Security Alliance (CSA) AI Safety Working Group, where he created the MAESTRO threat-modeling framework for agentic systems. Ken has authored multiple acclaimed books on AI engineering and distributed systems. He regularly advises Fortune 500 enterprises, government agencies, and research institutes on AI safety governance, secure agent systems, and governed RSI architectures. He also serves as a keynote speaker and conference chair across global technology summits.",
     },
 ]
 
