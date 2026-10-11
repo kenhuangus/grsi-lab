@@ -8,14 +8,20 @@ RSI loop (lab framing): **propose → isolate → verify/measure → keep/revert
 
 ## Lab index
 
-| Lab | Package | Focus |
-|-----|---------|--------|
-| 01 | `lab01_survey_ownership/` | Two-axis taxonomy, keep/revert loop, ownership manifest validation |
-| 02 | `lab02_proposals_model/` | Planner/implementer proposals, stub LoRA candidate envelope + forgetting gate |
-| 03 | `lab03_data_orchestration/` | Experience admission, harness mutation with per-module rollback |
-| 04 | `lab04_isolation_eval/` | Sandbox profiles, adversary checks, sealed ledger hash chain |
-| 05 | `lab05_promotion_ecosystem/` | Promotion gateway, boundary proxy, kill/rollback, failure atlas |
-| Demo | `running_lab/demo.py` | End-to-end dry-run of the governed loop |
+| Chapter | Package | Purpose |
+|--------:|---------|---------|
+| 2 | `labs/ch02_ownership/` | Ownership manifest + locked-write refusal |
+| 3 | `labs/ch03_proposals/` | Planner/implementer proposals + `candidate_diff` |
+| 4 | `labs/ch04_model_surface/` | Adapter/recipe/checkpoint contracts + forgetting gate |
+| 5 | `labs/ch05_data_memory/` | Experience admission + poison/collapse controls |
+| 6 | `labs/ch06_orchestration/` | Harness mutate / RRSI controls / ablation rows |
+| 7 | `labs/ch07_isolation/` | Sandbox profile + isolation receipts |
+| 8 | `labs/ch08_measure/` | Metric cards, adversary pass, sealed ledger, Token ROI |
+| 9 | `labs/ch09_promotion/` | Keep ≠ promote, freeze scan, risk-tier tokens, pacing |
+| 10 | `labs/ch10_ecosystem/` | Boundary broker, failure atlas, kill/rollback, publication |
+| Demo | `running_lab/demo.py` | End-to-end local run of the governed loop |
+
+Chapter 1 is survey-only (no graded lab). Legacy `lab01_*`…`lab05_*` packages remain as thin import shims where needed; new work uses `labs.chNN_*`.
 
 ## Setup
 
@@ -37,15 +43,15 @@ pytest -q
 
 CI runs the same suite on Python 3.11–3.13 (see `.github/workflows/ci.yml`).
 
-## Run the demo (dry-run)
+## Run the demo
 
 ```bash
-python -m running_lab.demo --dry-run
+python -m running_lab.demo --lab
 # or after install:
 grsi-demo
 ```
 
-The lab run exercises real local gates: propose → filesystem jail → on-disk adapter SHA-256 → metric-card evaluation over fixture datasets → HMAC-signed promotion tokens → kill/rollback. No GPU training is required; adapter artifacts are verified weight blobs plus config.
+The lab run exercises real local gates: propose → filesystem jail → on-disk adapter SHA-256 → metric-card evaluation over fixture datasets (requires a clean isolation receipt) → HMAC-signed promotion tokens → kill/rollback. No GPU training is required; adapter artifacts are verified weight blobs plus config.
 
 ## Contracts and citations
 

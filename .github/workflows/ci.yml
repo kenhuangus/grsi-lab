@@ -25,7 +25,7 @@ jobs:
       - name: Dependency audit
         run: pip-audit -r requirements.txt
       - name: Ruff check
-        run: ruff check rsi_core lab01_survey_ownership lab02_proposals_model lab03_data_orchestration lab04_isolation_eval lab05_promotion_ecosystem running_lab tests
+        run: ruff check rsi_core labs examples running_lab tests
       - name: Pytest
         run: pytest -q
       - name: Lab run

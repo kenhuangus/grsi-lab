@@ -48,6 +48,10 @@ class ComputeBudgetLedger:
             )
         key = (lineage, units)
         prior = self.spent.get(key, 0.0) + amount
+        if prior > max_amount:
+            raise ComputeBudgetError(
+                f"cumulative spend {prior} exceeds request budget {max_amount} {units}"
+            )
         if prior > global_cap:
             raise ComputeBudgetError(f"lineage {units} cap exceeded")
         self.spent[key] = prior

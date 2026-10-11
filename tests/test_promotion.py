@@ -6,10 +6,10 @@ from datetime import UTC, datetime
 
 import pytest
 
-from lab04_isolation_eval.eval_service import SealedLedger
-from lab05_promotion_ecosystem.frozen_policy import run_frozen_policy_scan
-from lab05_promotion_ecosystem.promotion_gateway import PromotionError, promote
-from rsi_core.crypto_tokens import mint_promotion_token
+from labs.ch08_measure import SealedLedger
+from labs.ch09_promotion import PromotionError, promote, run_frozen_policy_scan
+from labs.ch09_promotion.promotion_records import PromotionRecordStore
+from labs.ch09_promotion.risk_tier_token import mint_risk_tier_token
 
 LINEAGE = "12345678-1234-4234-8234-123456789abc"
 
@@ -39,12 +39,13 @@ CANDIDATE = {
 
 
 def _mint(scan_hash: str, **overrides: object) -> dict:
-    token = mint_promotion_token(
+    token = mint_risk_tier_token(
         token_id="tok-1",
         lineage_id=LINEAGE,
         human_signer="kenhuangus",
         risk_tier="low",
         scan_report_hash=scan_hash,
+        frozen_policy_scan_passed=True,
     )
     token.update(overrides)
     return token
@@ -90,6 +91,7 @@ def test_promotion_with_signed_token_and_ledger() -> None:
         ownership_manifest=MANIFEST,
         candidate=CANDIDATE,
         ledger=ledger,
+        record_store=PromotionRecordStore(),
     )
     assert result["status"] == "promoted"
 
@@ -131,12 +133,13 @@ def test_promotion_rejects_expired_token() -> None:
     scan = run_frozen_policy_scan(
         candidate=CANDIDATE, ownership_manifest=MANIFEST, sealed_decision=sealed
     )
-    token = mint_promotion_token(
+    token = mint_risk_tier_token(
         token_id="tok-1",
         lineage_id=LINEAGE,
         human_signer="kenhuangus",
         risk_tier="low",
         scan_report_hash=scan["report_hash"],
+        frozen_policy_scan_passed=True,
         ttl_seconds=1,
     )
     # Force expiry in the past by reminting is hard; call with now far future after mint

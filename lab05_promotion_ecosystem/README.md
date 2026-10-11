@@ -1,16 +1,8 @@
-# Lab 05 — Promotion & Ecosystem
+# Lab 05 (legacy shim)
 
-Human-signed promotion tokens, boundary proxy for egress, kill/rollback switches, and failure-atlas indexing.
+Canonical packages:
 
-## Modules
+- Promotion: `labs/ch09_promotion/`
+- Ecosystem: `labs/ch10_ecosystem/`
 
-- `promotion_gateway.py` — keep ≠ promote; token required
-- `boundary_proxy.py` — egress broker stub inheriting sandbox gates
-- `kill_rollback.py` — emergency kill + harness rollback
-- `failure_atlas.py` — index failure entries by RSI loop step
-
-## Run related tests
-
-```bash
-pytest -q tests/test_promotion.py
-```
+Modules in this directory re-export those implementations for older imports.

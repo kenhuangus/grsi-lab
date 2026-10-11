@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from lab04_isolation_eval.sandbox import (
+from labs.ch07_isolation.sandbox_profile import (
     SandboxViolation,
     assert_sandbox_allows,
     default_lab_profile,

@@ -6,11 +6,14 @@ Report security issues privately to the repository owner (Ken Huang / Distribute
 
 ## Scope of this lab
 
-`grsi-lab` is an educational companion. Sandbox, ledger, and promotion controls are **contract stubs** for Packt chapters — not a hardened multi-tenant runtime. Treat them as teaching models:
+`grsi-lab` is an educational companion. Sandbox, ledger, promotion, and ecosystem controls are **fully implemented teaching gates** for Packt chapters. They are not a hardened multi-tenant production runtime. Residual risk is expected and documented:
 
-- Path and jail checks demonstrate ownership / isolation rules.
-- Promotion tokens and sealed ledgers demonstrate governance gates.
+- Path and jail checks demonstrate ownership / isolation rules on a local filesystem.
+- Promotion tokens (HMAC) and sealed ledgers demonstrate governance gates with real crypto and hash chains.
+- Boundary proxy defaults to allowlist-only checks without outbound network (`enable_network=False`).
 - No real GPU training, cloud credentials, or production agent traffic is required for tests.
+
+Do not deploy these packages as a shared SaaS control plane without additional hardening (multi-tenant isolation, key management, distributed kill ack, audit retention).
 
 ## Maintainer scripts
 

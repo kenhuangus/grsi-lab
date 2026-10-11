@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from lab04_isolation_eval.eval_service import SealedLedger, hash_entry
+from labs.ch08_measure import SealedLedger, hash_entry
 
 
 def test_sealed_decision_hash_chain() -> None:

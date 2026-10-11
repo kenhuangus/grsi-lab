@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 from jsonschema.exceptions import ValidationError
 
-from lab03_data_orchestration.experience_admission import AdmissionPolicy, admit_experience
+from labs.ch05_data_memory.admit_experience import AdmissionPolicy, admit_experience
 from rsi_core.compute_budget import ComputeBudgetError, ComputeBudgetLedger
 
 LINEAGE = "12345678-1234-4234-8234-123456789abc"

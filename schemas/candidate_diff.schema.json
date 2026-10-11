@@ -20,35 +20,135 @@
     },
     "surface": {
       "type": "string",
-      "enum": ["model", "data", "orchestration", "research_process"]
+      "enum": [
+        "model",
+        "data",
+        "orchestration",
+        "research_process"
+      ]
     },
-    "hypothesis": { "type": "string", "minLength": 1 },
-    "metric": { "type": "string", "minLength": 1 },
+    "hypothesis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metric": {
+      "type": "string",
+      "minLength": 1
+    },
     "rollback": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["unit", "snapshot_ref"],
+      "required": [
+        "unit",
+        "snapshot_ref"
+      ],
       "properties": {
-        "unit": { "type": "string", "minLength": 1 },
-        "snapshot_ref": { "type": "string", "minLength": 1 }
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "snapshot_ref": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "diff": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["paths", "summary"],
+      "required": [
+        "paths",
+        "summary"
+      ],
       "properties": {
         "paths": {
           "type": "array",
           "minItems": 1,
-          "items": { "type": "string", "minLength": 1 }
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
         },
-        "summary": { "type": "string", "minLength": 1 }
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "proposer_role": {
       "type": "string",
-      "enum": ["planner", "implementer", "in_harness_verifier"]
+      "enum": [
+        "planner",
+        "implementer",
+        "in_harness_verifier"
+      ]
+    },
+    "isolation_receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_id",
+        "clean",
+        "signature"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "clean": {
+          "type": "boolean"
+        },
+        "lineage_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "diff_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "egress_hosts_contacted": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "credential_issued_at": {
+          "type": "string"
+        },
+        "credential_expires_at": {
+          "type": "string"
+        },
+        "resource_counters": {
+          "type": "object"
+        },
+        "runner_build_digest": {
+          "type": "string"
+        },
+        "tenant_id": {
+          "type": "string"
+        },
+        "denied_probes": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "signature": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
     }
   }
 }

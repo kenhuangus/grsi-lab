@@ -63,11 +63,18 @@ def mint_promotion_token(
     human_signer: str,
     risk_tier: str,
     scan_report_hash: str,
+    frozen_policy_scan_passed: bool,
     key: bytes | None = None,
     ttl_seconds: int = 3600,
     notes: str | None = None,
 ) -> dict[str, Any]:
-    """Mint a schema-valid, HMAC-signed promotion token."""
+    """Mint a schema-valid, HMAC-signed promotion token.
+
+    ``frozen_policy_scan_passed`` must reflect the actual frozen-policy scan result.
+    Schema requires true; a failed scan cannot mint a valid token.
+    """
+    if not frozen_policy_scan_passed:
+        raise ValueError("cannot mint promotion token when frozen policy scan failed")
     key = key or load_signing_key()
     now = datetime.now(UTC)
     token: dict[str, Any] = {
@@ -75,7 +82,7 @@ def mint_promotion_token(
         "lineage_id": lineage_id,
         "human_signer": human_signer,
         "risk_tier": risk_tier,
-        "frozen_policy_scan_passed": True,
+        "frozen_policy_scan_passed": bool(frozen_policy_scan_passed),
         "frozen_policy_scan_report_hash": scan_report_hash,
         "issued_at": now.replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "expires_at": (now + timedelta(seconds=ttl_seconds))

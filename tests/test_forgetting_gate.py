@@ -4,7 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from lab02_proposals_model.lora_candidate import forgetting_gate, make_adapter_candidate
+from labs.ch04_model_surface.adapter_package import make_adapter_candidate
+from labs.ch04_model_surface.forgetting_gate import forgetting_gate
 
 LINEAGE = "12345678-1234-4234-8234-123456789abc"
 

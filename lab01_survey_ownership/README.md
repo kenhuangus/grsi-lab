@@ -1,15 +1,12 @@
-# Lab 01 — Survey Ownership
+# Lab 01 (legacy shim) — Survey / Ownership
 
-Two-axis taxonomy of RSI targets, a minimal evolutionary keep/revert loop, and ownership-manifest validation against locked paths.
+Chapter-aligned homes:
 
-## Modules
+- Survey taxonomy + keep/revert: `examples/ch01/`
+- Ownership manifests, locked writes, freeze, blast: `labs/ch02_ownership/`
 
-- `taxonomy.py` — classify a component on (mutable|locked) × (evaluable|not)
-- `keep_revert_loop.py` — minimal propose → score → keep|revert cycle
-- `manifest_validator.py` — validate modularity contract fields
-
-## Run related tests
+This package re-exports those modules for older import paths.
 
 ```bash
-pytest -q tests/test_locked_path.py
+pytest -q labs/ch02_ownership/tests tests/test_locked_path.py
 ```

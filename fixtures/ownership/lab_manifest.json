@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "components": [
+    {
+      "path": "harness/skills/",
+      "owner": "platform",
+      "eval_hook": "eval/hooks/skill_heldout.py",
+      "rollback_unit": "harness.skills",
+      "observability_signal": "skill_ablation_delta",
+      "surface": "orchestration"
+    },
+    {
+      "path": "adapters/",
+      "owner": "ml",
+      "eval_hook": "eval/hooks/adapter_heldout.py",
+      "rollback_unit": "adapters.candidate",
+      "observability_signal": "forgetting_gate",
+      "surface": "model"
+    }
+  ],
+  "locked": [
+    "eval/",
+    "evaluators/",
+    "held_out/",
+    "metric_cards/",
+    "ledger/",
+    "sandbox/",
+    "promotion/",
+    "safety/",
+    "ownership/",
+    "schemas/",
+    "CONTRACTS.md"
+  ]
+}

@@ -1,12 +1,16 @@
-# Lab 03 — Data & Orchestration
+# Lab 03 — Data & Orchestration (legacy package name)
 
-Experience admission gates and harness mutation with per-module rollback units.
+Canonical implementations moved to chapter-aligned packages:
 
-## Modules
+- Experience admission → `labs/ch05_data_memory/`
+- Harness mutate / rollback → `labs/ch06_orchestration/`
 
-- `experience_admission.py` — admit/reject experience records under policy
-- `harness_mutate.py` — apply harness module patches with rollback snapshots
+This folder keeps thin import shims for older demos and docs that still reference `lab03_data_orchestration.*`.
 
 ## Run
 
-Covered by the demo dry-run and schema validation tests.
+```bash
+pytest -q labs/ch05_data_memory/tests labs/ch06_orchestration/tests
+python -m labs.ch05_data_memory broker-demo
+python -m labs.ch06_orchestration bi-level
+```

@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from lab03_data_orchestration.harness_mutate import HarnessStore
-from lab05_promotion_ecosystem.kill_rollback import KillSwitch, kill_and_rollback
+from labs.ch06_orchestration import HarnessStore
+from labs.ch10_ecosystem import KillSwitch, kill_and_rollback
 
 
 def test_kill_and_rollback_restores_modules() -> None:

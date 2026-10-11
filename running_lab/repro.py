@@ -7,7 +7,7 @@ import json
 import sys
 from pathlib import Path
 
-from lab04_isolation_eval.metric_eval import evaluate_metric_card, load_metric_card
+from labs.ch08_measure import evaluate_metric_card, load_metric_card
 
 ROOT = Path(__file__).resolve().parents[1]
 

@@ -1,14 +1,12 @@
-# Lab 02 — Proposals & Model Surface
+# Lab 02 (legacy shim) — Proposals & Model Surface
 
-Planner/implementer proposal engine and a stub LoRA candidate envelope with a forgetting gate. No real GPU or adapter training.
+Chapter-aligned homes:
 
-## Modules
+- Planner/implementer proposals: `labs/ch03_proposals/`
+- Adapter packages + forgetting gate: `labs/ch04_model_surface/`
 
-- `proposal_engine.py` — build schema-valid candidate diffs by role
-- `lora_candidate.py` — stub LoRA envelope + forgetting gate
-
-## Run related tests
+This package re-exports those modules for older import paths.
 
 ```bash
-pytest -q tests/test_candidate_diff.py
+pytest -q labs/ch03_proposals/tests labs/ch04_model_surface/tests
 ```

@@ -1,14 +1,13 @@
-# Lab 04 — Isolation & Evaluation
+# Lab 04 — Isolation & Evaluation (legacy package name)
 
-Sandbox profiles that block evaluator paths, plus an external eval service with an adversary pass and sealed ledger hash chain.
+Canonical sandbox / isolation implementation moved to `labs/ch07_isolation/`.
+Evaluation / sealed ledger lives in `labs/ch08_measure/` (and remaining `eval_service.py` / `metric_eval.py` shims or modules in this folder for demos).
 
-## Modules
+`sandbox.py` here is a thin re-export of `labs.ch07_isolation.sandbox_profile`.
 
-- `sandbox.py` — filesystem jail checks; blocked evaluator paths
-- `eval_service.py` — adversary checks + sealed decision ledger
-
-## Run related tests
+## Run
 
 ```bash
-pytest -q tests/test_sandbox.py tests/test_sealed_ledger.py
+pytest -q labs/ch07_isolation/tests tests/test_sandbox.py
+python -m labs.ch07_isolation run-clean
 ```

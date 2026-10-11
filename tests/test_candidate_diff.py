@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 from jsonschema import ValidationError
 
-from lab02_proposals_model.proposal_engine import build_proposal
+from labs.ch03_proposals.reject_gates import build_proposal
 from rsi_core.schemas_load import validate_instance
 from rsi_core.types import LockedPathError, Surface
 
@@ -39,6 +39,20 @@ def test_missing_required_field_rejected() -> None:
 
 
 def test_valid_candidate_via_engine() -> None:
+    manifest = {
+        "version": "1.0",
+        "components": [
+            {
+                "path": "data/buffer/",
+                "owner": "lab",
+                "eval_hook": "e",
+                "rollback_unit": "data.buffer",
+                "observability_signal": "o",
+                "surface": "data",
+            }
+        ],
+        "locked": ["eval/", "held_out/", "metric_cards/", "ledger/", "ownership/"],
+    }
     env = build_proposal(
         surface=Surface.DATA,
         hypothesis="Admit filtered experience only",
@@ -48,6 +62,8 @@ def test_valid_candidate_via_engine() -> None:
         rollback_unit="data.buffer",
         snapshot_ref="snap://buffer@0",
         proposer_role="planner",
+        ownership_manifest=manifest,
+        require_manifest=True,
     )
     assert env["surface"] == "data"
 

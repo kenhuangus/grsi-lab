@@ -32,6 +32,8 @@ grsi-repro = "running_lab.repro:main"
 where = ["."]
 include = [
     "rsi_core*",
+    "labs*",
+    "examples*",
     "lab01_survey_ownership*",
     "lab02_proposals_model*",
     "lab03_data_orchestration*",
@@ -48,7 +50,7 @@ rsi_core = ["schemas/*.schema.json"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
-testpaths = ["tests"]
+testpaths = ["tests", "labs"]
 addopts = "-q"
 
 [tool.ruff]

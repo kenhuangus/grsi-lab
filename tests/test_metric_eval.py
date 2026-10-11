@@ -4,11 +4,25 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from lab04_isolation_eval.eval_service import SealedLedger, adversary_pass, evaluate_keep
-from lab04_isolation_eval.metric_eval import evaluate_metric_card, load_metric_card
+from labs.ch07_isolation.receipts import issue_receipt
+from labs.ch07_isolation.sandbox_profile import default_lab_profile
+from labs.ch08_measure import (
+    SealedLedger,
+    adversary_pass,
+    evaluate_keep,
+    evaluate_metric_card,
+    load_metric_card,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 LINEAGE = "12345678-1234-4234-8234-123456789abc"
+
+RECEIPT = issue_receipt(
+    lineage_id=LINEAGE,
+    profile=default_lab_profile(),
+    diff_paths=["adapters/x/"],
+    clean=True,
+).to_dict()
 
 
 def test_metric_card_scores_from_fixtures() -> None:
@@ -32,6 +46,7 @@ def test_adversary_pass_blocks_eval_paths() -> None:
         "rollback": {"unit": "x", "snapshot_ref": "snap://x"},
         "diff": {"paths": ["eval/scorer.py"], "summary": "bad"},
         "proposer_role": "implementer",
+        "isolation_receipt": RECEIPT,
     }
     finding = adversary_pass(cand)
     assert finding.passed is False
@@ -46,6 +61,7 @@ def test_evaluate_keep_measures_not_injects() -> None:
         "rollback": {"unit": "adapters.x", "snapshot_ref": "snap://x"},
         "diff": {"paths": ["adapters/x/"], "summary": "adapter"},
         "proposer_role": "implementer",
+        "isolation_receipt": RECEIPT,
     }
     ledger = SealedLedger()
     sealed = evaluate_keep(
