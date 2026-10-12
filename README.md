@@ -6,7 +6,7 @@ Companion repository for the Packt book **Governed Recursive Self-Improvement**.
 
 RSI loop (lab framing): **propose → isolate → verify/measure → keep/revert → archive → promote → audit**.
 
-## Lab index
+## Lab index (Chapters 2–10)
 
 | Chapter | Package | Purpose |
 |--------:|---------|---------|
@@ -21,7 +21,42 @@ RSI loop (lab framing): **propose → isolate → verify/measure → keep/revert
 | 10 | `labs/ch10_ecosystem/` | Boundary broker, failure atlas, kill/rollback, publication |
 | Demo | `running_lab/demo.py` | End-to-end local run of the governed loop |
 
-Chapter 1 is survey-only (no graded lab). Legacy `lab01_*`…`lab05_*` packages remain as thin import shims where needed; new work uses `labs.chNN_*`.
+Chapter 1 is survey-only (no graded lab). Snippets: [`examples/ch01/`](examples/ch01/).
+
+## How to run a chapter lab
+
+From the repo root (after Setup below):
+
+```bash
+# Tests for one chapter
+pytest -q labs/ch02_ownership/tests
+pytest -q labs/ch03_proposals/tests
+pytest -q labs/ch04_model_surface/tests
+pytest -q labs/ch05_data_memory/tests
+pytest -q labs/ch06_orchestration/tests
+pytest -q labs/ch07_isolation/tests
+pytest -q labs/ch08_measure/tests
+pytest -q labs/ch09_promotion/tests
+pytest -q labs/ch10_ecosystem/tests
+
+# CLI help / operators (same pattern for each package)
+python -m labs.ch02_ownership --help
+python -m labs.ch03_proposals --help
+python -m labs.ch04_model_surface --help
+python -m labs.ch05_data_memory --help
+python -m labs.ch06_orchestration --help
+python -m labs.ch07_isolation --help
+python -m labs.ch08_measure --help
+python -m labs.ch09_promotion --help
+python -m labs.ch10_ecosystem --help
+
+# Cross-chapter handoff
+pytest -q tests/test_cross_chapter_pipeline.py
+```
+
+Each package README under `labs/chNN_*/` lists concrete accept/refuse CLI commands.
+
+Legacy `lab01_*`…`lab05_*` packages are thin import shims only; use `labs.chNN_*`.
 
 ## Setup
 
@@ -35,7 +70,7 @@ pip install -e ".[dev]"
 
 Requires Python 3.11+. Licensed under MIT (`LICENSE`).
 
-## Run tests
+## Run all tests
 
 ```bash
 pytest -q
